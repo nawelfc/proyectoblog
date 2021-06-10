@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Curso;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,7 +15,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        $this->call(CursoSeeder::class);
+        
+        //$this->call(CursoSeeder::class); SE UTILIZABA EN VERSIONES VIEJAS DE LARAVEL
+
+        //creacion de un registro seeder comandos tinker, este codigo iba en un archivo seeder separado en versiones anteriores
+        /*
+        $curso = new Curso;
+        $curso->name= 'laravel';
+        $curso->description='el mejor frameworkkk';
+        $curso->save(); 
+        */
+        User::factory(10)->create();
+        Curso::factory(100)->create();
     }
 }
