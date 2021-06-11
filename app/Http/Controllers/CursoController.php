@@ -19,6 +19,12 @@ class CursoController extends Controller
     }
 
     public function store(Request $request){ //request solicita lo que le transfiere el formulario, por ej el token
+        $request->validate([
+            'name' => 'required|max:50',
+            'description' => 'required|min:10',
+            'categoria' => 'required'
+        ]);
+
         $curso = new Curso();
 
         $curso->name = $request->name;
@@ -34,9 +40,9 @@ class CursoController extends Controller
 
     } */
     
-    public function show($id, $categoria = null){
+    public function show(Curso $id, $categoria = null){
 
-        $curso = Curso::find($id);
+        $curso = $id;
 
         if ($categoria){
             return view('cursos.category', ['curso' => $curso, 'categoria' => $categoria]); 
@@ -51,6 +57,12 @@ class CursoController extends Controller
     }
 
     public function update(Request $request, Curso $curso){
+        $request->validate([
+            'name' => 'required|max:50',
+            'description' => 'required|min:10',
+            'categoria' => 'required'
+        ]);
+        
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->categoria = $request->categoria;
