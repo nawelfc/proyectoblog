@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCurso;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 
@@ -18,13 +19,8 @@ class CursoController extends Controller
 
     }
 
-    public function store(Request $request){ //request solicita lo que le transfiere el formulario, por ej el token
-        $request->validate([
-            'name' => 'required|max:50',
-            'description' => 'required|min:10',
-            'categoria' => 'required'
-        ]);
-
+    public function store(StoreCurso $request){ //request solicita lo que le transfiere el formulario, por ej el token
+        
         $curso = new Curso();
 
         $curso->name = $request->name;
@@ -57,6 +53,7 @@ class CursoController extends Controller
     }
 
     public function update(Request $request, Curso $curso){
+        //si no se necesita personalizar las validaciones, se colocan como esta aqui debajo. De lo contrario se requiere crear un FormRequest para personalizarlas.
         $request->validate([
             'name' => 'required|max:50',
             'description' => 'required|min:10',
