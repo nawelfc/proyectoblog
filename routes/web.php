@@ -18,10 +18,10 @@ use League\CommonMark\Cursor;
 
 Route::get('/', HomeController::class);
 
-Route::get('cursos', [CursoController::class,  'index']);
+Route::get('cursos', [CursoController::class,  'index'])->name('cursos.index');
 
-Route::get('cursos/create', [CursoController::class,  'create']);
+Route::get('cursos/create', [CursoController::class,  'create'])->name('cursos.create');
 
 /* Route::get("cursos/{curso}", [CursoController::class,  'show']); */
 
-Route::get('cursos/{curso}/{categoria?}', [CursoController::class,  'show']);
+Route::get('cursos/{curso}/{categoria?}', [CursoController::class,  'show'])->name('cursos.show'); //espera una variable curso y una variable categoria exista o no, luego rutea al controlador curso y un metodo show. Asigna un nombre curso.show como referencia
