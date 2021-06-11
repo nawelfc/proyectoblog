@@ -18,7 +18,7 @@ class CursoController extends Controller
 
     }
 
-    public function store(Request $request){
+    public function store(Request $request){ //request solicita lo que le transfiere el formulario, por ej el token
         $curso = new Curso();
 
         $curso->name = $request->name;
@@ -45,8 +45,18 @@ class CursoController extends Controller
         }
     }
 
-    public function edit(Curso $curso){
+    public function edit(Curso $id){
+        $curso = $id;
         return view('cursos.edit', compact('curso'));
+    }
+
+    public function update(Request $request, Curso $curso){
+        $curso->name = $request->name;
+        $curso->description = $request->description;
+        $curso->categoria = $request->categoria;
+
+        $curso->save();
+        return redirect()->route('cursos.show',$curso);
     }
 
 }
