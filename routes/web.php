@@ -15,7 +15,7 @@ use League\CommonMark\Cursor;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//cada ruta tiene un nombre identificativo
 Route::get('/', HomeController::class)->name('home');
 
 Route::get('cursos', [CursoController::class,  'index'])->name('cursos.index');
@@ -29,6 +29,8 @@ Route::get("cursos/{id}", [CursoController::class,  'show'])->name('cursos.show'
 Route::get('cursos/{id}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
 
 Route::put('cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update'); //lo recomendable para laravel es usar PUT en lugar de POST
+
+Route::delete('cursos/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy');
 
 //Route::get('cursos/{curso}/{categoria?}', [CursoController::class, 'show'])->name('cursos.show'); //espera una variable curso y una variable categoria exista o no, luego rutea al controlador curso y un metodo show. Asigna un nombre curso.show como referencia
 
