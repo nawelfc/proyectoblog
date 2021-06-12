@@ -39,9 +39,9 @@ class CursoController extends Controller
 
     } */
     
-    public function show(Curso $id, $categoria = null){
+    public function show(Curso $curso, $categoria = null){
 
-        $curso = $id;
+        //$curso = $id;
 
         if ($categoria){
             return view('cursos.category', ['curso' => $curso, 'categoria' => $categoria]); 
@@ -50,8 +50,8 @@ class CursoController extends Controller
         }
     }
 
-    public function edit(Curso $id){
-        $curso = $id;
+    public function edit(Curso $curso){
+        //$curso = $id;
         return view('cursos.edit', compact('curso'));
     }
 
