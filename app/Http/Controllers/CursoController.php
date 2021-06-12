@@ -21,13 +21,16 @@ class CursoController extends Controller
 
     public function store(StoreCurso $request){ //request solicita lo que le transfiere el formulario, por ej el token
         
-        $curso = new Curso();
+        /* $curso = new Curso();
 
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->categoria = $request->categoria;
 
-        $curso->save();
+        $curso->save(); */
+
+        $curso = Curso::create($request->all()); //asignacion masiva. hace lo mismo que el codigo de arriba, ahorrando codigo. 
+
         return redirect()->route('cursos.show',$curso);
     }
 
@@ -60,11 +63,13 @@ class CursoController extends Controller
             'categoria' => 'required'
         ]);
         
-        $curso->name = $request->name;
+        /* $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->categoria = $request->categoria;
 
-        $curso->save();
+        $curso->save(); */
+
+        $curso->update($request->all()); //asignacion masiva. ahorra codigo y realiza lo mismo que el codigo comentado arriba.
         return redirect()->route('cursos.show',$curso);
     }
 
